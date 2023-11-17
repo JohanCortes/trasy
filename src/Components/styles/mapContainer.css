@@ -1,0 +1,51 @@
+.info {
+    display: flex;
+    width: 150px;
+}
+
+.mapContainer {
+    position: relative !important;
+    width: 70vw !important;
+    height: 75vh !important;
+    margin: 0 .5rem 0 1rem;
+    border: 1px solid #2f878acf;
+}
+
+.info-text {
+    display: inline-block;
+    width: 80%;
+    height: 100%;
+}
+
+.info-image {
+    display: inline-flex;
+    width: 20%;
+    height: inherit;
+    align-items: center;
+    justify-content: center;
+}
+
+.contain {
+    position: relative;
+    border: 2px solid #797979;
+    border-top: 0;
+    border-radius: 0 0 3px 3px;
+    width: 80%;
+    height: 75%;
+    background-color: #5050ff0c;
+}
+
+.content {
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+    bottom: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .mapContainer {
+        width: 100% !important;
+        margin: 0 0 1rem 0;
+        /* box-shadow: none; */
+    }
+}

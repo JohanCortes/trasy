@@ -1,0 +1,30 @@
+.list {
+    justify-content: center;
+    background-color: #ffffff38;
+    height: 75vh;
+    width: 30vw;
+    margin: 0 1rem 0 .5rem;
+    border: 1px solid #2f878acf;
+}
+
+@media screen and (max-width: 768px) {
+    .map-routes {
+        flex-direction: column;
+    }
+    .list {
+        width: 100% !important;
+        margin: 1rem 0 0 0;
+    }  
+}
+
+.btn-route{
+    display: block;
+    width: 75%;
+    height: 3rem;
+    margin: 2rem auto;
+    font-size: large;
+    font-weight: bold;
+    background-color: #2f878a;
+    color: white;
+    border: 2px solid #315f5f;
+}
