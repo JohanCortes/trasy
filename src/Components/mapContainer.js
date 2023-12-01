@@ -47,6 +47,6 @@ function MapContainer({ lat, lng, route, setInfoRoutes, locations, google }) {
 }
 
 export default GoogleApiWrapper({
-  apiKey: "AIzaSyB_7BtG4ZPDvAd96OPvm-aK-FSAhvnNrHs",
+  apiKey: "",
   language: "es-CO",
 })(MapContainer);
