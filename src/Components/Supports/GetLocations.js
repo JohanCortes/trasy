@@ -8,7 +8,7 @@ export const getLocations1 = async () => await
 export const getVariables = async (url) => await
     fetch(url, {
         method: 'GET',
-        headers: { 'Content-Type': 'application/json', 'X-Auth-Token': 'BBUS-TT1bGDHnO4oNbCESnVzFO4H9DL1Kep' }
+        headers: { 'Content-Type': 'application/json', 'X-Auth-Token': '' }
     }).then((response) => response.json())
         .then((data) => ({ label: data.results[0].name, lvl: data.results[0].lastValue.value }))
         .catch((error) => console.log(error));
@@ -17,7 +17,7 @@ export const getVariables = async (url) => await
 export const getLocations = async () => await
     fetch("https://industrial.api.ubidots.com/api/v2.0/devices/", {
         method: 'GET',
-        headers: { 'Content-Type': 'application/json', 'X-Auth-Token': 'BBUS-TT1bGDHnO4oNbCESnVzFO4H9DL1Kep' }
+        headers: { 'Content-Type': 'application/json', 'X-Auth-Token': '' }
     })
         .then((response) => response.json())
         .then(async (data) => {
