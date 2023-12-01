@@ -1,0 +1,50 @@
+.legs{
+    padding: 1rem;
+    border: 1px solid #eee;
+    box-shadow: 0 0 10px #00000033;
+    background-color: #FAFAFA;
+    display: flex;
+    cursor: pointer;
+}
+
+.ins{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.deploy{
+    max-height: 2000px;
+    overflow-y: auto;
+}
+
+.detail{
+    width: 50px;
+    margin: 0 5px;
+    background-image: url('/public/img/icon-arrow-down-11.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: transform 0.3s ease;
+}
+
+.deployed{
+    transform: rotate(180deg);
+}
+
+.leg{
+    width: calc(100% - 50px);
+}
+
+.leg > h4{
+    font-weight: normal;
+}
+
+ol{
+    padding: .7rem 0;
+}
+
+.step{
+    padding: .7rem 3rem;
+    font-size: 15px;
+}

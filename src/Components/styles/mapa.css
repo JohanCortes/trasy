@@ -1,0 +1,22 @@
+h1 {
+    text-align: center;
+    padding-top: 1rem;
+}
+
+.background{
+    box-shadow: 0 0 5px #43828591;
+    background-image: url("/public/img/background.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.map-routes {
+    display: flex;
+    background-color: #ffffff44;
+}
+
+/* .map-routes>* {
+    display: inline-block;
+} */
+
