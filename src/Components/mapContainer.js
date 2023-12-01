@@ -3,11 +3,10 @@ import React, { useState, useEffect } from 'react';
 import './styles/mapContainer.css';
 import { renderRoute } from "./Supports/RenderRoute";
 import './Supports/GetLocations'
-import { getLocations } from "./Supports/GetLocations";
 import CustomInfoWindow from "./customInfoWindow";
 
 
-function MapContainer({ lat, lng, route, setInfoRoutes, google }) {
+function MapContainer({ lat, lng, route, setInfoRoutes, locations, google }) {
   const [markers, setMarkers] = useState([]),
     [selectedMarker, setSelectedMarker] = useState({ lat: 0, lng: 0, label: '', lvl: 0 }),
     [showInfoWindow, setShowInfoWindow] = useState(false),
@@ -16,13 +15,13 @@ function MapContainer({ lat, lng, route, setInfoRoutes, google }) {
     getmark = (label) => markers.map((loc) => (loc.label === label) && [setSelectedMarker(loc), setShowInfoWindow(true)]),
     handleMapReady = (mapProps, map) => setMap(map);
 
-  useEffect(() => async () => await getLocations().then((data) => setMarkers(data)), []);
+  useEffect(() => setMarkers(locations), [locations]);
 
   useEffect(() => {
     setRoutes(route);
-    routes && routes.length >= 2 && renderRoute(map, routes)
+    routes && routes.length >= 1 && renderRoute(map, routes, markers)
       .then(res => setInfoRoutes(res));
-  }, [route, map, routes, setInfoRoutes]);
+  }, [route, map, routes, setInfoRoutes, markers]);
 
   return (
     <Map
@@ -32,6 +31,7 @@ function MapContainer({ lat, lng, route, setInfoRoutes, google }) {
       initialCenter={{ lat, lng }}
       onReady={handleMapReady}
     >
+      {/*console.log('markers: ',markers)*/}
       {markers.map((loc) => <Marker onClick={() => getmark(loc.label)} key={loc.label} label={loc.label} position={{ lat: loc.lat, lng: loc.lng }} />)}
       {
         selectedMarker && (
@@ -47,5 +47,6 @@ function MapContainer({ lat, lng, route, setInfoRoutes, google }) {
 }
 
 export default GoogleApiWrapper({
-  apiKey: "AIzaSyBbz70YKoQQhi7chwaHlfy9EXtuc0a3u28",
+  apiKey: "AIzaSyB_7BtG4ZPDvAd96OPvm-aK-FSAhvnNrHs",
+  language: "es-CO",
 })(MapContainer);

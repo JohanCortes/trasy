@@ -6,9 +6,10 @@
 .mapContainer {
     position: relative !important;
     width: 70vw !important;
-    height: 75vh !important;
-    margin: 0 .5rem 0 1rem;
-    border: 1px solid #2f878acf;
+    height: 83vh !important;
+    margin: 1rem .5rem 1rem 1rem;
+    box-shadow: 0 0 5px #2f878ab6;
+    background-color: #bbb;
 }
 
 .info-text {

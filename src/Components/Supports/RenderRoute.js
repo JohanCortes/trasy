@@ -1,15 +1,8 @@
-import { getLocations } from './GetLocations';
-let Dict = () => getLocations()
-    .then((data) => data.map((loc) => ({ [loc.label]: { lat: loc.lat, lng: loc.lng } })))
-    .then((data) => {
-        let dict = {};
-        data.forEach((e) => dict = { ...dict, ...e });
-        return dict;
-    });
-
-export const renderRoute = async (map, routes) => {
+export const renderRoute = async (map, routes, locations) => {
     let cols = routes.map(() => '#' + Math.floor(Math.random() * 10000000).toString(16)),
-        dict = await Dict();
+        dict = {}
+        locations = locations.map((loc) => ({ [loc.label]: { lat: loc.lat, lng: loc.lng } }))
+        locations.forEach((e) => dict = { ...dict, ...e });
 
     const request = [];
     routes.forEach((route) => {

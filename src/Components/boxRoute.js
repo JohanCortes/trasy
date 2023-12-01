@@ -1,12 +1,20 @@
 import './styles/boxRoute.css';
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-export default function BoxRoute({ route, map, performance }) {
+export default function BoxRoute({ keyy, route, map, performance, setIvisible, ivisible, setInstructions }) {
     const [stats, setStats] = useState(null),
         [visible, setVisible] = useState(true),
-        sec2text = (sec) => sec >= 3600 ? parseInt(sec / 3600) + 'h ' + parseInt(sec % 3600 / 60) + 'm' : parseInt(sec / 60) + 'm';
+        [uvisible, setUvisible] = useState(false),
+        navigate = useNavigate(),
+        sec2text = (sec) => sec >= 3600 ? parseInt(sec / 3600) + 'h ' + parseInt(sec % 3600 / 60) + 'm' : parseInt(sec / 60) + 'm',
+        details = (e) => {
+            setInstructions(route.res);
+            navigate('/rutas');
+        };
 
     useEffect(() => {
+        //setInstructions(route.res.directions.routes[0].legs[0].steps);
         const stats = {
             distance: 0,
             duration: 0,
@@ -20,13 +28,18 @@ export default function BoxRoute({ route, map, performance }) {
     }, [route]);
 
     useEffect(() => {
-        visible ? route.ref.setMap(map) : route.ref.setMap(null);
-    }, [visible, map, route]);
+        ivisible !== null && keyy !== ivisible && setVisible(false);
+        keyy === ivisible ? setUvisible(true) : setUvisible(false);
+        visible
+            ? route.ref.polylineOptions.strokeOpacity = 0.9
+            : route.ref.polylineOptions.strokeOpacity = 0;
+        map && route.ref.setMap(map);
+    }, [visible, uvisible, setVisible, ivisible, keyy, map, route]);
 
     return (
         <div className="box-route" style={{
-            backgroundColor: route.ref.polylineOptions.strokeColor + '45',
-            borderColor: route.ref.polylineOptions.strokeColor + 'B8',
+            backgroundColor: route.ref.polylineOptions.strokeColor + '4A',
+            borderColor: route.ref.polylineOptions.strokeColor + 'C0',
         }}>
             <div className="info-data">
                 <article>Distancia: {stats && parseInt(stats.distance / 10) / 100 + 'km'} </article>
@@ -34,10 +47,20 @@ export default function BoxRoute({ route, map, performance }) {
                 <article>Rendimiento: {performance}</article>
             </div>
             <div className="info-buttons">
-                <button className='show'></button>
-                <button className='hide' style={{ backgroundColor: visible ? '#f0f0f096' : '#ffcfa0d2' }} onClick={() => setVisible(!visible)}></button>
+                <button className='show' style={{ backgroundColor: !uvisible ? '#f0f0f096' : '#ffcfa0d2' }}
+                    onClick={() => {
+                        uvisible ? setIvisible(null) : setIvisible(keyy);
+                        !uvisible && setVisible(true);
+                        setUvisible(!uvisible);
+                    }}></button>
+                <button className='hide' style={{ backgroundColor: visible ? '#f0f0f096' : '#ffcfa0d2' }}
+                    onClick={() => {
+                        visible && setUvisible(false);
+                        setIvisible(null);
+                        setVisible(!visible)
+                    }}></button>
             </div>
-            <div className="info-details" style={
+            <div className="info-details" onClick={details} style={
                 { borderLeft: '1px solid ' + route.ref.polylineOptions.strokeColor + 'B8' }
             }>
                 <span>&gt;</span>

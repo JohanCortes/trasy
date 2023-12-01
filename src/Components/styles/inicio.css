@@ -1,0 +1,38 @@
+.bcg{
+    background-image: url("/public/img/background.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.bsg{
+    background-color: #ffffff88;
+}
+
+.contIn{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+}
+section {
+    margin: 2em;
+}
+
+p {
+    line-height: 1.6em;
+}
+
+section > h2 {
+    text-align: center;
+    padding: 1em;
+}
+
+.contIn > section > img {
+    max-width: 60%;
+    display: block;
+    margin: auto;
+    border-radius: 3%;
+    box-shadow: 0 0 3px #2F878A;
+}
