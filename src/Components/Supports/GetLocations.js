@@ -1,4 +1,3 @@
-
 export const getLocations1 = async () => await
     fetch("data/locations.json")
         .then((response) => response.json())
