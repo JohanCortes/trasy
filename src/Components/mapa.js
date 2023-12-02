@@ -9,7 +9,7 @@ export default function Mapa({ setInstructions, setPoints}) {
     const [routes, setRoutes] = useState(null),
         [infoRoutes, setInfoRoutes] = useState(null),
         [locations, setLocations] = useState(null),
-        [initialPoint] = useState({label: 'PP', lat: 4.70626752181293, lng: -74.10561138971275, lvl: 0 });
+        [initialPoint] = useState({label: 'PP', lat: 4.525516741247419, lng: -74.13747041892492, lvl: 0 });
 
         useEffect(() => async () => await getLocations().then(data => {
             data.push(initialPoint)

@@ -47,6 +47,6 @@ function MapContainer({ lat, lng, route, setInfoRoutes, locations, google }) {
 }
 
 export default GoogleApiWrapper({
-  apiKey: "AIzaSyB_7BtG4ZPDvAd96OPvm-aK-FSAhvnNrHs",
+  apiKey: process.env.REACT_APP_GOOGLE_MAPS_KEY,
   language: "es-CO",
 })(MapContainer);
